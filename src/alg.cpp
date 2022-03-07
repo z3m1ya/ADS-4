@@ -12,10 +12,11 @@ int countPairs1(int* arr, int len, int value) {
 int countPairs2(int* arr, int len, int value) {
     int temp = 0;
     for (int i = 0; i < len - 1; i++)
-        if (arr[i]<=value)
+        if (arr[i] <= value) {
             for (int j = i + 1; j < len; j++)
                 if (arr[i] + arr[j] == value)
                     temp++;
+        }
     return temp;
 }
 
@@ -59,10 +60,9 @@ int binSearch(int* arr, int l, int r, int value) {
 
 int countPairs3(int* arr, int len, int value) {
     quickSort(arr, len);
-    
     int temp = 0;
     for (int i = 0; i < len; i++) {
-        temp += binSearch(&arr[i], 0, len-i, value - arr[i]);
+        temp += binSearch(&arr[i+1], 0, len-i, value - arr[i]);
     }
     return temp;
 }
